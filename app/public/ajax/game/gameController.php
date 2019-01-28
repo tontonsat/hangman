@@ -3,7 +3,7 @@
 session_start();
 
 require_once($_SERVER['DOCUMENT_ROOT'] .'/hangman/app/config/appConfig.php');
-require_once($_SERVER['DOCUMENT_ROOT'] .'/hangman/app/src/model/modules/word/WordDAO.class.php');
+require_once($_SERVER['DOCUMENT_ROOT'] .'/hangman/app/src/model/modules/game/Game.class.php');
 
 
 

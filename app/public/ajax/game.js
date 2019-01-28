@@ -8,7 +8,7 @@ $(document).ready(function(){
         success: function(data){
             console.log('ajax get game ok');
             console.log(data);
-            //obj = JSON.parse(data);
+            // obj = JSON.parse(data);
             // $('.game').html(obj.value1);
             $('.game').append(data);
         }
