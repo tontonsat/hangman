@@ -24,8 +24,7 @@
         }
         unset($_SESSION['success']);
         unset($_SESSION['error']);
-     ?>
-    <?php require_once $view;
-            echo $content;
     ?>
+    <div class="game">
+    </div>
 </body>

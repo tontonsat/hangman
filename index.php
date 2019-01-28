@@ -15,42 +15,10 @@ Autoloader::register();
 */
 define("CTRL_NS", "App\Src\Controller\\");
 define("VIEW_PATH", "./app/view/");
-define("WEB_PATH", "./public/");
 
-$defaultCtrlname = "GameController";
-$defaultMethod   = "indexAction";
-
-if(isset($_GET['ctrl'])){
-    $ctrlname = ucfirst($_GET['ctrl'])."Controller";
+if(!empty($_GET['init'])) {
+    $game = new Game();
+    $game->indexAction();
 }
-else {
-    $ctrlname = $defaultCtrlname;
-}
-$ctrlname = CTRL_NS.$ctrlname;
-
-if(class_exists($ctrlname)) {
-    $controller = new $ctrlname();
-}
-else{
-    header("Location:404.php");
-    die();
-}
-
-if(isset($_GET['action'])){
-    $method = $_GET['action']."Action";
-    if(method_exists($controller, $method)) {
-        if(isset($_GET['id'])){
-            $result = $controller->$method($_GET['id']);
-        }
-        else{
-            $result = $controller->$method();
-        }
-    }
-}
-
-$result = (!isset($result)) ? $controller->$defaultMethod() : $result;
-
-$view  = $result['view'];
-$data = $result['data'];
 
 require_once 'app/view/layout.php';

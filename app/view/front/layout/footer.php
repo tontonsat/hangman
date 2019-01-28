@@ -2,5 +2,5 @@
     <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
     <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
     <script src="app/public/script/script.js"></script>
-    <script src="app/public/ajax/module.js"></script>
+    <script src="app/public/ajax/game.js"></script>
 </html>

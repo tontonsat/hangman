@@ -34,9 +34,34 @@ class WordDAO {
         $sql = "SELECT * FROM word WHERE id_word = $id";
         $tabWords = Db::runQuery($sql);
         $result = "";
-        foreach($tabUsers->fetchAll() as $data){
+        foreach($tabWords->fetchAll() as $data){
             $result = new Word($data);
         }
+        if($result == "") {
+            $errors[] = "Mot inexistant";
+        }
+        if(!empty($errors)) {
+            $_SESSION['error'] = $errors;
+            header("location: ?ctrl=Game&action=index");
+            die();
+        }
+        return $result;
+    }
+
+    public function getRandomWord() {
+        $sql = "SELECT * FROM word";
+        $tabWords = Db::runQuery($sql);
+        $result = "";
+        foreach($tabWords->fetchAll() as $data){
+            $words[] = new Word($data);
+        }
+
+        /** random number generation */
+        $rand = rand(0,count($result));
+
+        /** random word generation */
+        $result = $words[$rand];
+
         if($result == "") {
             $errors[] = "Mot inexistant";
         }

@@ -5,7 +5,7 @@ namespace App\Src\Model\Modules\Word;
 use App\Core\Entity as Entity;
 use App\Src\Model\Modules\Word\Dao;
 
-class User extends Entity {
+class Word extends Entity {
 
     private $_idWord;
     private $_nameWord;
