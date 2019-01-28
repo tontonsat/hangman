@@ -1,9 +1,6 @@
 <?php
 
-namespace App\Src\Model\Modules\Word;
-
-use App\Core\Entity as Entity;
-use App\Src\Model\Modules\Word\Dao;
+require_once($_SERVER['DOCUMENT_ROOT'] .'/hangman/app/core/Entity.class.php');
 
 class Word extends Entity {
 

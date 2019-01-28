@@ -1,25 +1,21 @@
 <?php
 
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT']. '/app/config/appConfig.php';
-require_once 'app/core/Autoloader.php';
 
-Autoloader::register();
+require_once($_SERVER['DOCUMENT_ROOT'] .'/hangman/app/config/appConfig.php');
+require_once($_SERVER['DOCUMENT_ROOT'] .'/hangman/app/src/model/modules/word/WordDAO.class.php');
 
-use App\Src\Model\Modules\Word\WordDAO as Word;
 
-$word = new Word();
 
 if(!empty($_GET['init'])) {
-    $randWord = $word->getRandomWord();
     initGame();
 }
 
 function initGame() {
+    $word = new WordDAO();
+    $randWord = $word->getRandomWord();
     $_SESSION['word'] = $randWord;
-    $data = array();
-    $data[] = "test1";
-    $data[] = "test2";
+    $data[] = ['word'=>$randWord];
 
-    echo $data;
+    var_dump($data);
 }

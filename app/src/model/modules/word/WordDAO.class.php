@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Src\Model\Modules\Word;
-
-use App\Core\MySqlDao as Db;
-use App\Src\Model\Modules\Word\Word as Word;
+require_once($_SERVER['DOCUMENT_ROOT'] .'/hangman/app/core/MySqlDao.class.php');
+require_once($_SERVER['DOCUMENT_ROOT'] .'/hangman/app/src/model/modules/word/Word.class.php');
 
 class WordDAO {
 
@@ -12,7 +10,7 @@ class WordDAO {
     /** Constructor uses getInstance of Dao class **/
     public function __construct() {
 
-        $this->_db = Db::getInstance();
+        $this->_db = MySqlDao::getInstance();
     }
 
     /**
@@ -22,7 +20,7 @@ class WordDAO {
     */
     public function getAll() {
         $sql = "SELECT * FROM word ORDER BY id_word";
-        $tabWords = Db::runQuery($sql);
+        $tabWords = MySqlDao::runQuery($sql);
         foreach($tabWords->fetchAll() as $data){
             //var_dump($data);
             $result[] = new Word($data);
@@ -32,7 +30,7 @@ class WordDAO {
 
     public function getWordById($id) {
         $sql = "SELECT * FROM word WHERE id_word = $id";
-        $tabWords = Db::runQuery($sql);
+        $tabWords = MySqlDao::runQuery($sql);
         $result = "";
         foreach($tabWords->fetchAll() as $data){
             $result = new Word($data);
@@ -49,28 +47,12 @@ class WordDAO {
     }
 
     public function getRandomWord() {
-        $sql = "SELECT * FROM word";
-        $tabWords = Db::runQuery($sql);
-        $result = "";
-        foreach($tabWords->fetchAll() as $data){
-            $words[] = new Word($data);
-        }
+        $sql = "SELECT * FROM word ORDER BY uuid()";
+        $tabWords = MySqlDao::runQuery($sql);
+        $data = $tabWords->fetchAll();
+        $word = $data[array_rand($data, 1)];
 
-        /** random number generation */
-        $rand = rand(0,count($result));
-
-        /** random word generation */
-        $result = $words[$rand];
-
-        if($result == "") {
-            $errors[] = "Mot inexistant";
-        }
-        if(!empty($errors)) {
-            $_SESSION['error'] = $errors;
-            header("location: ?ctrl=Game&action=index");
-            die();
-        }
-        return $result;
+        return new Word($word);
     }
 
 }

@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Core;
-
-use App\Core\Dao as Dao;
+require_once($_SERVER['DOCUMENT_ROOT'] .'/hangman/app/core/Dao.class.php');
 
 class MySqlDao extends Dao {
 

@@ -5,10 +5,6 @@
  * @author Stagiaire
  * uses variables declared in appConfig
  */
-namespace App\Core;
-
-use \PDO as PDO;
-
 class Dao {
 
     private static $_instance;
