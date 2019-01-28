@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+  padding-top: 3.5rem;
+}
+
+.container {
+    display: inline-flex;
+}
+
+.navbar-brand {
+    padding: 5px;
+}
+
+#navbar-title {
+    padding-left: 20px;
+}
+
+#navbar-left {
+    position: fixed;
+    height: 100%;
+}
+
+#main-content {
+    padding: 20px;
+}
+
+#button-login-nav-top {
+   margin-left: 6px;
+}
