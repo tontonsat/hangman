@@ -4,13 +4,12 @@ $(document).ready(function(){
         url: 'app/public/ajax/game/gameController.php',
         type: 'get',
         data: {init: 1,
-            },
+        },
         success: function(data){
-            console.log('ajax get game ok');
+            console.log('ajax get word ok');
             console.log(data);
-            // obj = JSON.parse(data);
-            // $('.game').html(obj.value1);
-            $('.game').append(data);
+            obj = JSON.parse(data);
+            $('.game').html(obj.word);
         }
     });
 

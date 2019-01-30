@@ -12,7 +12,14 @@ class Game {
     private $_wordhandle;
 
     public function __construct() {
-        $this->_wordHandle = new Word();
+        $this->_wordHandle = new WordDAO();
         $this->_randWord = $this->_wordHandle->getRandomWord();
     }
+
+    public function generateWord() {
+        $_SESSION['word'] = $this->_randWord;
+        $data = $this->_randWord;
+        return $data;
+    }
+
 }

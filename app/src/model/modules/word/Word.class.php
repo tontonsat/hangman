@@ -18,15 +18,15 @@ class Word extends Entity {
     }
 
     public function getId() {
-        return $this->_idUser;
+        return $this->_idWord;
     }
 
     function getName() {
-        return $this->_nameUser;
+        return $this->_nameWord;
     }
 
     function getlength() {
-        return $this->_surnameUser;
+        return $this->_lengthWord;
     }
 
     function setId($id) {
